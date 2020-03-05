@@ -3,13 +3,6 @@ module.exports = {
   transpileDependencies: [
     'vuetify'
   ],
-  devServer: {
-    https: {
-      key: fs.readFileSync('./src/assets/certs/rootSSL.key'),
-      cert: fs.readFileSync('./src/assets/certs/rootSSL.pem'),
-      passphrase: 'mciot'
-    }
-  },
   chainWebpack: (config) => {
     config
       .plugin('html')
