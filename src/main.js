@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 
 Vue.prototype.$mobileBreakPoint = 1264
 
-Vue.prototype.$apiLink = 'https://niladi.de/wp-json/wp/v2/'
+Vue.prototype.$apiLink = 'https://wp.mciot.niladi.de/wp-json/wp/v2/'
 Vue.prototype.$fetchData = function (path, params) {
   return axios.get(this.$apiLink + path, {params: params})
 }
