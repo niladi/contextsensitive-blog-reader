@@ -1,0 +1,36 @@
+version: '3.1'
+
+networks:
+  wp_net:
+
+services:
+  blogreader:
+    image: 'bitnami/apache:latest'
+    volumes:
+      - ./reader:/app
+    networks:
+      - proxy
+                             
+  wordpress:
+    image: wordpress
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: niklas
+      WORDPRESS_DB_PASSWORD: Qa9BWsg3Yxd5F2f2
+      WORDPRESS_DB_NAME: mciot
+    volumes:
+      - /srv/mc-iot-project/webapp/wp_data:/var/www/html
+    networks:
+      - proxy
+      - wp_net
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: mciot
+      MYSQL_USER: niklas
+      MYSQL_PASSWORD: Qa9BWsg3Yxd5F2f2
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    networks:
+      - wp_net
+
